@@ -8,8 +8,7 @@ class ListOfCountries extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      countries: [],
-      loaded: false
+      countries: []
     };
   }
   componentDidMount = async () => {
@@ -17,7 +16,7 @@ class ListOfCountries extends React.Component {
   };
   getData = async () => {
     const data = await allCountryData();
-    this.setState({ countries: data, loaded: true });
+    this.setState({ countries: data});
   };
 
   render() {
@@ -25,13 +24,16 @@ class ListOfCountries extends React.Component {
     const countries = 
        countriesArray.map( data => (
          <Country
+         data={data}
          key={data.name}
          name={data.name}
+         capital={data.capital}
+         population={data.population}
+        //  flag={data.flag}
          />
        ))
     return (
       <div>
-        <p>working</p>
         {countries}
       </div>
     );
