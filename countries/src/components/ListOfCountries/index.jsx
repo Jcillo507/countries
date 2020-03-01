@@ -1,7 +1,7 @@
 import React from "react";
 import { Link } from "react-router-dom";
 
-import CountryCard from "../Country/";
+import CountryCard from "../CountryCard";
 
 
 import { allCountryData } from "../services/ApiCall";
