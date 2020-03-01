@@ -1,16 +1,18 @@
-import React from 'react'
+import React from "react";
 
-const Country = props =>{
-  console.log(props.data)
- return(
-  <div>
-    <p>{props.name}</p>
-    <p>{props.capital}</p>
-    {/* <img src={props.flag}/> */}
-    <p>{props.population}</p>
-    
-  </div>
- )
-} 
+import './country.scss'
 
-export default Country
+const CountryCard = props => {
+  console.log(props);
+  return (
+    <div className='country-ctr'>
+      <p>{props.data.name}</p>
+      <p>{props.data.capital}</p>
+      <img className='country-flag'src={props.data.flag}/>
+      <p>{props.data.population}</p>
+      <p>{props.data.region}</p>
+    </div>
+  );
+};
+
+export default CountryCard;

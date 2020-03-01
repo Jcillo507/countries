@@ -1,6 +1,7 @@
 import React from "react";
+import { Link } from "react-router-dom";
 
-import Country from "../Country/";
+import CountryCard from "../Country/";
 
 import { allCountryData } from "../services/ApiCall";
 
@@ -23,14 +24,16 @@ class ListOfCountries extends React.Component {
     const countriesArray = Array.from(this.state.countries);
     const countries = 
        countriesArray.map( data => (
-         <Country
+         <Link
+         to={{
+           pathname:`/{data.name}`,
+           info:{data:data}
+         }}>
+         <CountryCard
          data={data}
          key={data.name}
-         name={data.name}
-         capital={data.capital}
-         population={data.population}
-        //  flag={data.flag}
          />
+         </Link>
        ))
     return (
       <div>
