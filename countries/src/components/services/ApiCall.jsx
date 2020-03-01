@@ -10,3 +10,13 @@ try {
   throw error
 }
 }
+
+
+export const specificCountry = async (name)=>{
+  try {
+    const countryData = await axios.get(`https://restcountries.eu/rest/v2/name/${name}`)
+    return countryData.data
+  } catch (error) {
+    throw error
+  }
+}
