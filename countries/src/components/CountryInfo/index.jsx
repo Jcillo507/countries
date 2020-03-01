@@ -1,6 +1,7 @@
 import React from 'react'
 
-const CountryInfo = ()=>{
+const CountryInfo = (props)=>{
+  console.log(props)
   return(
     <div>working</div>
   )

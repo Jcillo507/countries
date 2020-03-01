@@ -3,7 +3,6 @@ import React from "react";
 import './country.scss'
 
 const CountryCard = props => {
-  console.log(props);
   return (
     <div className='country-ctr'>
       <p>{props.data.name}</p>

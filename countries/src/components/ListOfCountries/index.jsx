@@ -3,6 +3,7 @@ import { Link } from "react-router-dom";
 
 import CountryCard from "../Country/";
 
+
 import { allCountryData } from "../services/ApiCall";
 
 class ListOfCountries extends React.Component {
@@ -26,7 +27,7 @@ class ListOfCountries extends React.Component {
        countriesArray.map( data => (
          <Link
          to={{
-           pathname:`/{data.name}`,
+           pathname:`/${data.name}`,
            info:{data:data}
          }}>
          <CountryCard
@@ -35,8 +36,8 @@ class ListOfCountries extends React.Component {
          />
          </Link>
        ))
-    return (
-      <div>
+      return (
+        <div>
         {countries}
       </div>
     );
