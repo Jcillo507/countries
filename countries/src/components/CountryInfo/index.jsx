@@ -22,7 +22,7 @@ class CountryInfo extends React.Component {
 
     const show = data.map(data => (
       <div>
-        <h1>{data.alpha3code}</h1>
+        <h1>{data.name}</h1>
         <p>{data.nativeName}</p>
         <img src={data.flag} />
         <p>{data.population}</p>
