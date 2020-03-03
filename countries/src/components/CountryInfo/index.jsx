@@ -6,9 +6,9 @@ class CountryInfo extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      data: [], 
-      languages:[],
-      borders:[]
+      data: [],
+      languages: [],
+      borders: []
     };
   }
   componentDidMount = async () => {
@@ -17,16 +17,21 @@ class CountryInfo extends React.Component {
   getData = async () => {
     const country = this.props.location.pathname.slice(1);
     const data = await specificCountry(country);
-    this.setState({ data: data, borders:data[0].borders, languages:data[0].languages });
+    this.setState({
+      data: data,
+      borders: data[0].borders,
+      languages: data[0].languages
+    });
   };
   render() {
     const { data } = this.state;
-    const { languages } = this.state
-    const { borders } =this.state
-    console.log(data, borders)
+    const { languages } = this.state;
+    const { borders } = this.state;
+    console.log(data, borders);
     const langArr = languages.map((lang, i, arr) => (
       <span>
-        {lang.name}{i != arr.length - 1 ? ", " : ""}
+        {lang.name}
+        {i != arr.length - 1 ? ", " : ""}
       </span>
     ));
     const showInfo = data.map(data => (
@@ -41,10 +46,7 @@ class CountryInfo extends React.Component {
         <p>Top Level Domain: {data.topLevelDomain}</p>
         <p>Demonym: {data.demonym}</p>
         <p>Currency: {data.currencies[0].name}</p>
-        <div>
-          {langArr}
-          
-        </div>
+        <div>Languages: {langArr}</div>
       </div>
     ));
 
