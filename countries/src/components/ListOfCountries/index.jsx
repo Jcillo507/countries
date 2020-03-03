@@ -3,14 +3,14 @@ import { Link } from "react-router-dom";
 
 import CountryCard from "../CountryCard";
 
-
 import { allCountryData } from "../services/ApiCall";
 
 class ListOfCountries extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      countries: []
+      countries: [], 
+      countryList:[]
     };
   }
   componentDidMount = async () => {
@@ -22,9 +22,9 @@ class ListOfCountries extends React.Component {
   };
 
   render() {
-    const countriesArray = Array.from(this.state.countries);
-    const countries = 
-       countriesArray.map( data => (
+    const { countries } = this.state
+    const countriesDisplay = 
+       countries.map( data => (
          <Link
          to={{
            pathname:`/${data.name}`,
@@ -38,7 +38,7 @@ class ListOfCountries extends React.Component {
        ))
       return (
         <div>
-        {countries}
+        {countriesDisplay}
       </div>
     );
   }

@@ -6,7 +6,9 @@ class CountryInfo extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      data: []
+      data: [], 
+      languages:[],
+      borders:[]
     };
   }
   componentDidMount = async () => {
@@ -15,27 +17,40 @@ class CountryInfo extends React.Component {
   getData = async () => {
     const country = this.props.location.pathname.slice(1);
     const data = await specificCountry(country);
-    this.setState({ data: data });
+    this.setState({ data: data, borders:data[0].borders, languages:data[0].languages });
   };
   render() {
     const { data } = this.state;
-
-    const show = data.map(data => (
+    const { languages } = this.state
+    const { borders } =this.state
+    console.log(data, borders)
+    const showInfo = data.map(data => (
       <div>
-        <h1>{data.name}</h1>
-        <p>{data.nativeName}</p>
         <img src={data.flag} />
-        <p>{data.population}</p>
-        <p>{data.region}</p>
-        <p>{data.subregion}</p>
-        <p>{data.capital}</p>
-        <p>{data.topLevelDomain}</p>
-        {/* <p>{data.currencies}</p>
-        <p>{data.languages}</p>
-        <p>{data.borderCountries}</p> */}
+        <h1>{data.name}</h1>
+        <p>Native Name: {data.nativeName}</p>
+        <p>Population: {data.population}</p>
+        <p>Region: {data.region}</p>
+        <p>Subregion: {data.subregion}</p>
+        <p>Capital: {data.capital}</p>
+        <p>Top Level Domain: {data.topLevelDomain}</p>
+        <p>Demonym: {data.demonym}</p>
+        <p>Currency: {data.currencies[0].name}</p>
+        <div>
+          {languages.map(lang => (
+            <span>{lang.name} </span>
+          ))}
+          
+        </div>
       </div>
     ));
-    return <div>{show}</div>;
+
+    return (
+      <div>
+        {showInfo}
+        {this.state.borders}
+      </div>
+    );
   }
 }
 
