@@ -10,7 +10,8 @@ class ListOfCountries extends React.Component {
     super(props);
     this.state = {
       countries: [], 
-      countryList:[]
+      countryList:[],
+      loaded:false
     };
   }
   componentDidMount = async () => {
@@ -18,11 +19,19 @@ class ListOfCountries extends React.Component {
   };
   getData = async () => {
     const data = await allCountryData();
-    this.setState({ countries: data});
+    this.setState({ countries: data, loaded:true});
   };
-
+  
   render() {
-    const { countries } = this.state
+    const { countries } = this.state;
+    const { countryList } = this.state
+      if (this.state.loaded === true) {
+        countries.map(cName =>
+          countryList.push((new Object({country:cName.name, code:cName.alpha3Code})
+          )
+        ));
+      }
+      console.log(countryList)
     const countriesDisplay = 
        countries.map( data => (
          <Link
@@ -31,6 +40,7 @@ class ListOfCountries extends React.Component {
            info:{data:data}
          }}>
          <CountryCard
+         list={countryList}
          data={data}
          key={data.name}
          />

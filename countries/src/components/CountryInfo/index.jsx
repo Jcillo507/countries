@@ -48,7 +48,7 @@ class CountryInfo extends React.Component {
     return (
       <div>
         {showInfo}
-        {this.state.borders}
+        {borders}
       </div>
     );
   }
