@@ -24,6 +24,11 @@ class CountryInfo extends React.Component {
     const { languages } = this.state
     const { borders } =this.state
     console.log(data, borders)
+    const langArr = languages.map((lang, i, arr) => (
+      <span>
+        {lang.name}{i != arr.length - 1 ? ", " : ""}
+      </span>
+    ));
     const showInfo = data.map(data => (
       <div>
         <img src={data.flag} />
@@ -37,9 +42,7 @@ class CountryInfo extends React.Component {
         <p>Demonym: {data.demonym}</p>
         <p>Currency: {data.currencies[0].name}</p>
         <div>
-          {languages.map(lang => (
-            <span>{lang.name} </span>
-          ))}
+          {langArr}
           
         </div>
       </div>

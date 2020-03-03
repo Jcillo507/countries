@@ -19,10 +19,12 @@ class ListOfCountries extends React.Component {
   };
   getData = async () => {
     const data = await allCountryData();
+    sessionStorage.setItem('countryData', JSON.stringify(data))
     this.setState({ countries: data, loaded:true});
   };
   
   render() {
+    console.log(sessionStorage)
     const { countries } = this.state;
     const { countryList } = this.state
       if (this.state.loaded === true) {
@@ -30,6 +32,8 @@ class ListOfCountries extends React.Component {
           countryList.push((new Object({country:cName.name, code:cName.alpha3Code})
           )
         ));
+            sessionStorage.setItem("countryList", JSON.stringify(countryList));
+
       }
       console.log(countryList)
     const countriesDisplay = 
@@ -40,7 +44,6 @@ class ListOfCountries extends React.Component {
            info:{data:data}
          }}>
          <CountryCard
-         list={countryList}
          data={data}
          key={data.name}
          />
