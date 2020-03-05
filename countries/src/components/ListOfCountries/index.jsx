@@ -9,9 +9,10 @@ class ListOfCountries extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      countries: [], 
-      countryList:[],
-      loaded:false
+      countries: [],
+      countryList: [],
+      countryCodes: [],
+      loaded: false
     };
   }
   componentDidMount = async () => {
@@ -19,41 +20,36 @@ class ListOfCountries extends React.Component {
   };
   getData = async () => {
     const data = await allCountryData();
-    sessionStorage.setItem('countryData', JSON.stringify(data))
-    this.setState({ countries: data, loaded:true});
+    sessionStorage.setItem("countryData", JSON.stringify(data));
+    this.setState({ countries: data, loaded: true });
+    
   };
-  
-  render() {
-    console.log(sessionStorage)
-    const { countries } = this.state;
-    const { countryList } = this.state
-      if (this.state.loaded === true) {
-        countries.map(cName =>
-          countryList.push((new Object({country:cName.name, code:cName.alpha3Code})
-          )
-        ));
-            sessionStorage.setItem("countryList", JSON.stringify(countryList));
 
-      }
-      console.log(countryList)
-    const countriesDisplay = 
-       countries.map( data => (
-         <Link
-         to={{
-           pathname:`/${data.name}`,
-           info:{data:data}
-         }}>
-         <CountryCard
-         data={data}
-         key={data.name}
-         />
-         </Link>
-       ))
-      return (
-        <div>
-        {countriesDisplay}
-      </div>
-    );
+  render() {
+    console.log(sessionStorage);
+    const { countries } = this.state;
+    const { countryList } = this.state;
+    if (this.state.loaded === true) {
+      countries.map(cName =>
+        countryList.push(
+          new Object({ country: cName.name, code: cName.alpha3Code })
+        )
+      );
+      sessionStorage.setItem("countryList", JSON.stringify(countryList));
+    }
+    console.log(countryList);
+    const countriesDisplay = countries.map(data => (
+      <Link
+        key={data.name}
+        to={{
+          pathname: `/${data.name}`,
+          info: { data: data, codes:countryList }
+        }}
+      >
+        <CountryCard data={data} codes={countryList}/>
+      </Link>
+    ));
+    return <div>{countriesDisplay}</div>;
   }
 }
 

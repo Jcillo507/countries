@@ -28,14 +28,15 @@ class CountryInfo extends React.Component {
     const { languages } = this.state;
     const { borders } = this.state;
     console.log(data, borders);
+    console.log(this.props)
     const langArr = languages.map((lang, i, arr) => (
-      <span>
+      <span key={lang.name}>
         {lang.name}
-        {i != arr.length - 1 ? ", " : ""}
+        {i !== arr.length - 1 ? ", " : ""}
       </span>
     ));
     const showInfo = data.map(data => (
-      <div>
+      <div key={data.name}>
         <img src={data.flag} />
         <h1>{data.name}</h1>
         <p>Native Name: {data.nativeName}</p>
