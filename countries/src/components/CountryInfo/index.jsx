@@ -1,4 +1,5 @@
 import React from "react";
+import { Link, Route, Switch } from "react-router-dom";
 
 import { specificCountry } from "../services/ApiCall";
 
@@ -8,11 +9,13 @@ class CountryInfo extends React.Component {
     this.state = {
       data: [],
       languages: [],
-      borders: []
+      borders: [],
+      list: []
     };
   }
   componentDidMount = async () => {
     await this.getData();
+    this.setState({ list: this.props.location.info.codes });
   };
   getData = async () => {
     const country = this.props.location.pathname.slice(1);
@@ -27,8 +30,17 @@ class CountryInfo extends React.Component {
     const { data } = this.state;
     const { languages } = this.state;
     const { borders } = this.state;
-    console.log(data, borders);
-    console.log(this.props)
+    const { list } = this.state;
+    
+    const borderList = list
+      .filter(e => borders.includes(e.code))
+      .map(el => (
+        <div key={el.country}>
+          <Link to={{ pathname: `/${el.country}` }}>{el.country}</Link>
+
+        </div>
+      ));
+
     const langArr = languages.map((lang, i, arr) => (
       <span key={lang.name}>
         {lang.name}
@@ -48,13 +60,14 @@ class CountryInfo extends React.Component {
         <p>Demonym: {data.demonym}</p>
         <p>Currency: {data.currencies[0].name}</p>
         <div>Languages: {langArr}</div>
+        {/* <div>{borderShow(borders, list)}</div> */}
       </div>
     ));
-
     return (
       <div>
         {showInfo}
-        {borders}
+        {/* {borders} */}
+        {borderList}
       </div>
     );
   }

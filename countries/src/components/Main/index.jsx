@@ -11,6 +11,7 @@ return (
       <Route path={`/:name`} render={props => <CountryInfo {...props} />} />
     <ListOfCountries />
     <CountryInfo />
+
     </Switch>
   </div>
 );
