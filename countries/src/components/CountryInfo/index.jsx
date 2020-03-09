@@ -15,7 +15,7 @@ class CountryInfo extends React.Component {
   }
   componentDidMount = async () => {
     await this.getData();
-    this.setState({ list: this.props.location.info.codes });
+    this.getCodes();
   };
   getData = async () => {
     const country = this.props.location.pathname.slice(1);
@@ -26,18 +26,24 @@ class CountryInfo extends React.Component {
       languages: data[0].languages
     });
   };
+  getCodes = () => {
+    const code = sessionStorage.getItem("countryList");
+    const codes = JSON.parse(code)
+    this.setState({list:codes})
+  };
   render() {
     const { data } = this.state;
     const { languages } = this.state;
     const { borders } = this.state;
     const { list } = this.state;
-    
+
+ 
+
     const borderList = list
       .filter(e => borders.includes(e.code))
       .map(el => (
         <div key={el.country}>
-          <Link to={{ pathname: `/${el.country}` }}>{el.country}</Link>
-
+          <Link to={{ pathname: `/${el.country}`}}>{el.country}</Link>
         </div>
       ));
 
@@ -66,7 +72,6 @@ class CountryInfo extends React.Component {
     return (
       <div>
         {showInfo}
-        {/* {borders} */}
         {borderList}
       </div>
     );

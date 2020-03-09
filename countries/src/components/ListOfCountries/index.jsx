@@ -44,7 +44,6 @@ class ListOfCountries extends React.Component {
           info: { data: data, codes:countryList }
         }}
       >
-        
         <CountryCard data={data} codes={countryList}/>
       </Link>
     ));
