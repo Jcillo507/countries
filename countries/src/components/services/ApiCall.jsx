@@ -12,11 +12,13 @@ try {
 }
 
 
-export const specificCountry = async (name)=>{
+export const specificCountry = async name => {
   try {
-    const countryData = await axios.get(`https://restcountries.eu/rest/v2/name/${name}`)
-    return countryData.data
+    const countryData = await axios.get(
+      `https:restcountries.eu/rest/v2/name/${name}?fullText=true`
+    );
+    return countryData.data;
   } catch (error) {
-    throw error
+    throw error;
   }
-}
+};
