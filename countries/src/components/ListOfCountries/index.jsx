@@ -26,7 +26,6 @@ class ListOfCountries extends React.Component {
   };
 
   render() {
-    console.log(sessionStorage);
     const { countries } = this.state;
     const { countryList } = this.state;
     if (this.state.loaded === true) {
@@ -37,7 +36,6 @@ class ListOfCountries extends React.Component {
       );
       sessionStorage.setItem("countryList", JSON.stringify(countryList));
     }
-    console.log(countryList);
     const countriesDisplay = countries.map(data => (
       <Link
         key={data.name}
