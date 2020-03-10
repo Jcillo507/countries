@@ -1,6 +1,5 @@
 import React from "react";
-import { Link, Route, Switch } from "react-router-dom";
-import CountryCard from '../CountryCard/'
+import { Link } from "react-router-dom";
 
 import { specificCountry } from "../services/ApiCall";
 
@@ -8,12 +7,10 @@ class CountryInfo extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      country: [],
       data: [],
       languages: [],
       borders: [],
-      list: [], 
-      change:false
+      list: [],
     };
   }
   componentDidMount = async () => {
@@ -23,11 +20,11 @@ class CountryInfo extends React.Component {
     //   await this.getData();
     // }
   };
-  componentDidUpdate= async (prevProps)=>{
-    if (prevProps.location.pathname!==this.props.location.pathname) {
-     await this.getData()
+  componentDidUpdate = async prevProps => {
+    if (prevProps.location.pathname !== this.props.location.pathname) {
+      await this.getData();
     }
-  }
+  };
   getData = async () => {
     const countryName = this.props.location.pathname.slice(1);
     const data = await specificCountry(countryName);
@@ -35,7 +32,6 @@ class CountryInfo extends React.Component {
       data: data,
       borders: data[0].borders,
       languages: data[0].languages,
-      country: countryName
     });
   };
 
@@ -50,17 +46,12 @@ class CountryInfo extends React.Component {
     const { languages } = this.state;
     const { borders } = this.state;
     const { list } = this.state;
- const change =()=>{
-   this.setState(this.state)
- }
+
     const borderList = list
       .filter(e => borders.includes(e.code))
       .map(el => (
         <div key={el.country}>
-          <Link to={{ pathname: `/${el.country}` }} onClick={change}>
-            {el.country}
-          </Link>
-    
+          <Link to={{ pathname: `/${el.country}` }}>{el.country}</Link>
         </div>
       ));
 
@@ -72,7 +63,7 @@ class CountryInfo extends React.Component {
     ));
     const showInfo = data.map(data => (
       <div key={data.name}>
-        <img src={data.flag} />
+        <img src={data.flag} alt={data.name}/>
         <h1>{data.name}</h1>
         <p>Native Name: {data.nativeName}</p>
         <p>Population: {data.population}</p>
@@ -87,7 +78,6 @@ class CountryInfo extends React.Component {
     ));
     return (
       <div>
-        
         {showInfo}
         {borderList}
       </div>
