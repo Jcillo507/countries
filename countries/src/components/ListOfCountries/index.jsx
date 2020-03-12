@@ -2,17 +2,18 @@ import React from "react";
 import { Link } from "react-router-dom";
 
 import CountryCard from "../CountryCard";
+import SearchBar from "../SearchBar/";
 
-import { allCountryData } from "../services/ApiCall";
+import { allCountryData } from "../../services/ApiCall";
 
 class ListOfCountries extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
       countries: [],
-      countryList: [],
-      countryCodes: [],
-      loaded: false
+      loaded: false,
+      search: [],
+      results: []
     };
   }
   componentDidMount = async () => {
@@ -20,14 +21,18 @@ class ListOfCountries extends React.Component {
   };
   getData = async () => {
     const data = await allCountryData();
-    sessionStorage.setItem("countryData", JSON.stringify(data));
     this.setState({ countries: data, loaded: true });
-    
+  };
+  searchChange = e => {
+    e.preventDefault();
+    this.setState({ search: e.target.value });
   };
 
   render() {
     const { countries } = this.state;
-    const { countryList } = this.state;
+    const { search } = this.state;
+    console.log(this.state.search);
+    const countryList = [];
     if (this.state.loaded === true) {
       countries.map(cName =>
         countryList.push(
@@ -36,18 +41,47 @@ class ListOfCountries extends React.Component {
       );
       sessionStorage.setItem("countryList", JSON.stringify(countryList));
     }
-    const countriesDisplay = countries.map(data => (
-      <Link
-        key={data.name}
-        to={{
-          pathname: `/${data.name}`,
-          info: { data: data, codes:countryList }
-        }}
-      >
-        <CountryCard data={data} codes={countryList}/>
-      </Link>
-    ));
-    return <div>{countriesDisplay}</div>;
+
+    const countriesDisplay =
+      search.length === 0
+        ? countries.map(data => (
+            <Link
+              key={data.name}
+              to={{
+                pathname: `/${data.name}`,
+                info: { data: data }
+              }}
+            >
+              <CountryCard data={data} />
+            </Link>
+          ))
+        : countries
+            .filter(e => e.name.toLowerCase().includes(search.toLowerCase()))
+            .map(data => (
+              <Link
+                key={data.name}
+                to={{
+                  pathname: `/${data.name}`,
+                  info: { data: data }
+                }}
+              >
+                <CountryCard data={data} />
+              </Link>
+            ));
+    const test = ["afds", "gfds", "gfdewsq"];
+    return (
+      <div>
+        <form>
+          <input
+            type="text"
+            placeholder="Search for a country"
+            onChange={this.searchChange}
+          />
+        </form>
+        {/* <SearchBar content={test} /> */}
+        {countriesDisplay}
+      </div>
+    );
   }
 }
 
