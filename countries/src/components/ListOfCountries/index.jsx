@@ -2,8 +2,6 @@ import React from "react";
 import { Link } from "react-router-dom";
 
 import CountryCard from "../CountryCard";
-import SearchBar from "../SearchBar/";
-
 import { allCountryData } from "../../services/ApiCall";
 
 class ListOfCountries extends React.Component {
@@ -68,7 +66,6 @@ class ListOfCountries extends React.Component {
                 <CountryCard data={data} />
               </Link>
             ));
-    const test = ["afds", "gfds", "gfdewsq"];
     return (
       <div>
         <form>
@@ -78,7 +75,6 @@ class ListOfCountries extends React.Component {
             onChange={this.searchChange}
           />
         </form>
-        {/* <SearchBar content={test} /> */}
         {countriesDisplay}
       </div>
     );
