@@ -39,33 +39,23 @@ class ListOfCountries extends React.Component {
       );
       sessionStorage.setItem("countryList", JSON.stringify(countryList));
     }
-
+    const countryIteration = data => (
+      <Link
+        key={data.name}
+        to={{
+          pathname: `/${data.name}`,
+          info: { data: data }
+        }}
+      >
+        <CountryCard data={data} />
+      </Link>
+    );
     const countriesDisplay =
       search.length === 0
-        ? countries.map(data => (
-            <Link
-              key={data.name}
-              to={{
-                pathname: `/${data.name}`,
-                info: { data: data }
-              }}
-            >
-              <CountryCard data={data} />
-            </Link>
-          ))
+        ? countries.map(countryIteration)
         : countries
             .filter(e => e.name.toLowerCase().includes(search.toLowerCase()))
-            .map(data => (
-              <Link
-                key={data.name}
-                to={{
-                  pathname: `/${data.name}`,
-                  info: { data: data }
-                }}
-              >
-                <CountryCard data={data} />
-              </Link>
-            ));
+            .map(countryIteration);
     return (
       <div>
         <form>
