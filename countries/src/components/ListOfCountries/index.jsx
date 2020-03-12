@@ -29,12 +29,11 @@ class ListOfCountries extends React.Component {
   render() {
     const { countries } = this.state;
     const { search } = this.state;
-    console.log(this.state.search);
     const countryList = [];
     if (this.state.loaded === true) {
       countries.map(cName =>
         countryList.push(
-          new Object({ country: cName.name, code: cName.alpha3Code })
+          { country: cName.name, code: cName.alpha3Code }
         )
       );
       sessionStorage.setItem("countryList", JSON.stringify(countryList));
