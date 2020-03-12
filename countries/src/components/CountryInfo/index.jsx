@@ -1,7 +1,7 @@
 import React from "react";
 import { Link } from "react-router-dom";
 
-import { specificCountry } from "../services/ApiCall";
+import { specificCountry } from "../../services/ApiCall";
 
 class CountryInfo extends React.Component {
   constructor(props) {
@@ -10,15 +10,12 @@ class CountryInfo extends React.Component {
       data: [],
       languages: [],
       borders: [],
-      list: [],
+      list: []
     };
   }
   componentDidMount = async () => {
     await this.getData();
     this.getCodes();
-    // if (this.props.location.pathname !== this.state.country[0]) {
-    //   await this.getData();
-    // }
   };
   componentDidUpdate = async prevProps => {
     if (prevProps.location.pathname !== this.props.location.pathname) {
@@ -31,7 +28,7 @@ class CountryInfo extends React.Component {
     this.setState({
       data: data,
       borders: data[0].borders,
-      languages: data[0].languages,
+      languages: data[0].languages
     });
   };
 
@@ -46,7 +43,6 @@ class CountryInfo extends React.Component {
     const { languages } = this.state;
     const { borders } = this.state;
     const { list } = this.state;
-
     const borderList = list
       .filter(e => borders.includes(e.code))
       .map(el => (
@@ -54,7 +50,7 @@ class CountryInfo extends React.Component {
           <Link to={{ pathname: `/${el.country}` }}>{el.country}</Link>
         </div>
       ));
-
+    console.log(this.props);
     const langArr = languages.map((lang, i, arr) => (
       <span key={lang.name}>
         {lang.name}
@@ -63,7 +59,7 @@ class CountryInfo extends React.Component {
     ));
     const showInfo = data.map(data => (
       <div key={data.name}>
-        <img src={data.flag} alt={data.name}/>
+        <img src={data.flag} alt={data.name} />
         <h1>{data.name}</h1>
         <p>Native Name: {data.nativeName}</p>
         <p>Population: {data.population}</p>
@@ -78,6 +74,9 @@ class CountryInfo extends React.Component {
     ));
     return (
       <div>
+        <Link to={{ pathname: "/" }}>
+          <button>Back</button>
+        </Link>
         {showInfo}
         {borderList}
       </div>

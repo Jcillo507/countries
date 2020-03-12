@@ -1,6 +1,6 @@
 import React from "react";
 
-import './country.scss'
+import "./country.scss";
 
 const CountryCard = props => {
   return (
