@@ -3,7 +3,6 @@ import { Link } from "react-router-dom";
 import Dropdown from "react-dropdown";
 import "react-dropdown/style.css";
 
-
 import CountryCard from "../CountryCard";
 import { allCountryData } from "../../services/ApiCall";
 
@@ -14,8 +13,7 @@ class ListOfCountries extends React.Component {
       countries: [],
       loaded: false,
       search: [],
-      region:'',
-     
+      region: ""
     };
   }
   componentDidMount = async () => {
@@ -32,21 +30,18 @@ class ListOfCountries extends React.Component {
 
   render() {
     let select;
-    console.log(select)
     const onDDClick = e => {
       select = e.value;
-      console.log(e.value,  select);
+      this.setState({region:select})
     };
     const { countries } = this.state;
     const { search } = this.state;
     const countryList = [];
-    const options = [ "World", "Africa", "America", "Asia", "Europe", "Oceania" ];
+    const options = ["World", "Africa", "America", "Asia", "Europe", "Oceania"];
     // const defaultOption = "Filter By Region";
     if (this.state.loaded === true) {
       countries.map(cName =>
-        countryList.push(
-          { country: cName.name, code: cName.alpha3Code }
-        )
+        countryList.push({ country: cName.name, code: cName.alpha3Code })
       );
       sessionStorage.setItem("countryList", JSON.stringify(countryList));
     }
@@ -61,11 +56,18 @@ class ListOfCountries extends React.Component {
         <CountryCard data={data} />
       </Link>
     );
+
     const countriesDisplay =
-      search.length === 0
-        ? countries.map(countryIteration)
+      this.state.region === undefined ||this.state.region ==="World"
+        ? search.length === 0
+          ? countries.map(countryIteration)
+          : countries
+              .filter(e => e.name.toLowerCase().includes(search.toLowerCase()))
+              .map(countryIteration)
         : countries
-            .filter(e => e.name.toLowerCase().includes(search.toLowerCase()))
+            .filter(e =>
+              e.region.toLowerCase().includes(this.state.region.toLowerCase())
+            )
             .map(countryIteration);
     return (
       <div>
