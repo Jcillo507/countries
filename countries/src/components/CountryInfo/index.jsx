@@ -77,7 +77,7 @@ class CountryInfo extends React.Component {
     return (
       <div>
         <Link to={{ pathname: "/" }}>
-          <button>Back</button>
+          <button>Home</button>
         </Link>
         {showInfo}
         {borderList}

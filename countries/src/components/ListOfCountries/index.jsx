@@ -31,7 +31,7 @@ class ListOfCountries extends React.Component {
   render() {
     const { countries } = this.state;
     const { search } = this.state;
-    const { region } =this.state
+    const { region } = this.state;
     const countryList = [];
     const options = ["World", "Africa", "America", "Asia", "Europe", "Oceania"];
     // const defaultOption = "Filter By Region";
@@ -41,9 +41,9 @@ class ListOfCountries extends React.Component {
       );
       sessionStorage.setItem("countryList", JSON.stringify(countryList));
     }
-     const onDDClick = e => {
-       this.setState({ region: e.value });
-     };
+    const onDDClick = e => {
+      this.setState({ region: e.value });
+    };
     const countryIteration = data => (
       <Link
         key={data.name}
@@ -57,17 +57,19 @@ class ListOfCountries extends React.Component {
     );
 
     const countriesDisplay =
-      region === undefined || region ==="World"
+      region === undefined || region === "World"
         ? search.length === 0
           ? countries.map(countryIteration)
           : countries
               .filter(e => e.name.toLowerCase().includes(search.toLowerCase()))
               .map(countryIteration)
+        : search.length === 0
+        ? countries.filter(e => e.region.includes(region)).map(countryIteration)
         : countries
-            .filter(e =>
-              e.region.toLowerCase().includes(this.state.region.toLowerCase())
-            )
+            .filter(e => e.name.toLowerCase().includes(search.toLowerCase()))
+            .filter(e => e.region.includes(region))
             .map(countryIteration);
+
     return (
       <div>
         <form>
