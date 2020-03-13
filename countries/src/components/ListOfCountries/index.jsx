@@ -1,5 +1,8 @@
 import React from "react";
 import { Link } from "react-router-dom";
+import Dropdown from "react-dropdown";
+import "react-dropdown/style.css";
+
 
 import CountryCard from "../CountryCard";
 import { allCountryData } from "../../services/ApiCall";
@@ -11,7 +14,8 @@ class ListOfCountries extends React.Component {
       countries: [],
       loaded: false,
       search: [],
-      results: []
+      region:'',
+     
     };
   }
   componentDidMount = async () => {
@@ -27,9 +31,17 @@ class ListOfCountries extends React.Component {
   };
 
   render() {
+    let select;
+    console.log(select)
+    const onDDClick = e => {
+      select = e.value;
+      console.log(e.value,  select);
+    };
     const { countries } = this.state;
     const { search } = this.state;
     const countryList = [];
+    const options = [ "World", "Africa", "America", "Asia", "Europe", "Oceania" ];
+    // const defaultOption = "Filter By Region";
     if (this.state.loaded === true) {
       countries.map(cName =>
         countryList.push(
@@ -64,6 +76,11 @@ class ListOfCountries extends React.Component {
             onChange={this.searchChange}
           />
         </form>
+        <Dropdown
+          options={options}
+          onChange={onDDClick}
+          placeholder="Filter By Region"
+        />
         {countriesDisplay}
       </div>
     );
