@@ -1,6 +1,8 @@
 import React from "react";
 import { Link } from "react-router-dom";
 
+import InfoLine from '../InfoLine/'
+
 import { specificCountry } from "../../services/ApiCall";
 
 class CountryInfo extends React.Component {
@@ -61,14 +63,14 @@ class CountryInfo extends React.Component {
       <div key={data.name}>
         <img src={data.flag} alt={data.name} />
         <h1>{data.name}</h1>
-        <p>Native Name: {data.nativeName}</p>
-        <p>Population: {data.population}</p>
-        <p>Region: {data.region}</p>
-        <p>Subregion: {data.subregion}</p>
-        <p>Capital: {data.capital}</p>
-        <p>Top Level Domain: {data.topLevelDomain}</p>
-        <p>Demonym: {data.demonym}</p>
-        <p>Currency: {data.currencies[0].name}</p>
+        <InfoLine title='Native Name: ' value={data.nativeName} />
+        <InfoLine title='Population: ' value={data.population}/>
+        <InfoLine title='Region: ' value ={data.region} />
+        <InfoLine title='Subregion: ' value ={data.subregion}/>
+        <InfoLine title ='Capital: ' value ={data.capital}/>
+        <InfoLine title ='Top Level Domain: ' value={data.topLevelDomain}/>
+        <InfoLine title='Demonym: ' value={data.demonym} />
+        <InfoLine title='Currency: ' value={data.currencies[0].name}/>
         <div>Languages: {langArr}</div>
       </div>
     ));

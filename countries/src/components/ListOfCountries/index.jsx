@@ -29,13 +29,9 @@ class ListOfCountries extends React.Component {
   };
 
   render() {
-    let select;
-    const onDDClick = e => {
-      select = e.value;
-      this.setState({region:select})
-    };
     const { countries } = this.state;
     const { search } = this.state;
+    const { region } =this.state
     const countryList = [];
     const options = ["World", "Africa", "America", "Asia", "Europe", "Oceania"];
     // const defaultOption = "Filter By Region";
@@ -45,6 +41,9 @@ class ListOfCountries extends React.Component {
       );
       sessionStorage.setItem("countryList", JSON.stringify(countryList));
     }
+     const onDDClick = e => {
+       this.setState({ region: e.value });
+     };
     const countryIteration = data => (
       <Link
         key={data.name}
@@ -58,7 +57,7 @@ class ListOfCountries extends React.Component {
     );
 
     const countriesDisplay =
-      this.state.region === undefined ||this.state.region ==="World"
+      region === undefined || region ==="World"
         ? search.length === 0
           ? countries.map(countryIteration)
           : countries
