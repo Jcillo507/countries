@@ -1,7 +1,9 @@
 import React from "react";
 import { Link } from "react-router-dom";
 
-import InfoLine from '../InfoLine/'
+import "./countryInfo.scss";
+
+import InfoLine from "../InfoLine/";
 
 import { specificCountry } from "../../services/ApiCall";
 
@@ -48,9 +50,9 @@ class CountryInfo extends React.Component {
     const borderList = list
       .filter(e => borders.includes(e.code))
       .map(el => (
-        <div key={el.country}>
+        <span key={el.country}>
           <Link to={{ pathname: `/${el.country}` }}>{el.country}</Link>
-        </div>
+        </span>
       ));
     console.log(this.props);
     const langArr = languages.map((lang, i, arr) => (
@@ -60,27 +62,33 @@ class CountryInfo extends React.Component {
       </span>
     ));
     const showInfo = data.map(data => (
-      <div key={data.name}>
+      <div key={data.name} className="info-wrapper">
         <img src={data.flag} alt={data.name} />
-        <h1>{data.name}</h1>
-        <InfoLine title='Native Name: ' value={data.nativeName} />
-        <InfoLine title='Population: ' value={data.population}/>
-        <InfoLine title='Region: ' value ={data.region} />
-        <InfoLine title='Subregion: ' value ={data.subregion}/>
-        <InfoLine title ='Capital: ' value ={data.capital}/>
-        <InfoLine title ='Top Level Domain: ' value={data.topLevelDomain}/>
-        <InfoLine title='Demonym: ' value={data.demonym} />
-        <InfoLine title='Currency: ' value={data.currencies[0].name}/>
-        <div>Languages: {langArr}</div>
+        <div className="info-ctr">
+          <h1>{data.name}</h1>
+          <InfoLine title="Native Name: " value={data.nativeName} />
+          <InfoLine title="Population: " value={data.population} />
+          <InfoLine title="Region: " value={data.region} />
+          <InfoLine title="Subregion: " value={data.subregion} />
+          <InfoLine title="Capital: " value={data.capital} />
+          <InfoLine title="Top Level Domain: " value={data.topLevelDomain} />
+          <InfoLine title="Demonym: " value={data.demonym} />
+          <InfoLine title="Currency: " value={data.currencies[0].name} />
+          <div>
+            <strong>Languages: </strong> {langArr}
+          </div>
+          <div>
+            <strong>Border Countries :</strong> {borderList}
+          </div>
+        </div>
       </div>
     ));
     return (
-      <div>
+      <div className='countryinfo-ctr'>
         <Link to={{ pathname: "/" }}>
           <button>Home</button>
         </Link>
         {showInfo}
-        {borderList}
       </div>
     );
   }

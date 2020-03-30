@@ -3,6 +3,8 @@ import { Link } from "react-router-dom";
 import Dropdown from "react-dropdown";
 import "react-dropdown/style.css";
 
+import './listOfCountries.scss'
+
 import CountryCard from "../CountryCard";
 import { allCountryData } from "../../services/ApiCall";
 
@@ -13,7 +15,7 @@ class ListOfCountries extends React.Component {
       countries: [],
       loaded: false,
       search: [],
-      region: ""
+      region: "World"
     };
   }
   componentDidMount = async () => {
@@ -34,7 +36,6 @@ class ListOfCountries extends React.Component {
     const { region } = this.state;
     const countryList = [];
     const options = ["World", "Africa", "America", "Asia", "Europe", "Oceania"];
-    // const defaultOption = "Filter By Region";
     if (this.state.loaded === true) {
       countries.map(cName =>
         countryList.push({ country: cName.name, code: cName.alpha3Code })
@@ -45,6 +46,7 @@ class ListOfCountries extends React.Component {
       this.setState({ region: e.value });
     };
     const countryIteration = data => (
+      <div className='country-list'>
       <Link
         key={data.name}
         to={{
@@ -53,9 +55,8 @@ class ListOfCountries extends React.Component {
         }}
       >
         <CountryCard data={data} />
-      </Link>
+      </Link></div>
     );
-
     const countriesDisplay =
       region === undefined || region === "World"
         ? search.length === 0
@@ -72,19 +73,24 @@ class ListOfCountries extends React.Component {
 
     return (
       <div>
+        <span className='search-ctr'>
         <form>
           <input
+          className='search-input'
             type="text"
             placeholder="Search for a country"
             onChange={this.searchChange}
           />
         </form>
         <Dropdown
+        className='dropdown'
           options={options}
           onChange={onDDClick}
           placeholder="Filter By Region"
-        />
-        {countriesDisplay}
+        /></span>
+        <h1>{region}</h1>
+        <div className='list-ctr'>
+        {countriesDisplay}</div>
       </div>
     );
   }

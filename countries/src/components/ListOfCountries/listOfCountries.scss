@@ -1,0 +1,41 @@
+.list-ctr{
+  width:100vw;
+  display:flex;
+  flex-wrap:wrap;
+  justify-content: center;
+}
+.country-list{
+  width:300px;
+  margin: 30px 60px;
+  text-align: center;
+  box-shadow: 2px 2px rgb(221, 221, 221);
+  border-radius: 2px;
+  a
+  {text-decoration: none;
+  color:black}
+  
+}
+.dropdown{
+  width:200px;
+}
+.Dropdown-menu{
+  max-height:fit-content;
+    border-radius: 5px;
+
+}
+
+.Dropdown-control{
+  border-radius: 2px;
+}
+
+.search-ctr{
+  display: flex;
+  justify-content: space-between;
+  margin: 40px 100px;
+}
+
+.search-input{
+  height:35px;
+  width:400px;
+  font-size: 20px;
+}
