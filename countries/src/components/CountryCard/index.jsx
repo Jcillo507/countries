@@ -10,10 +10,16 @@ const CountryCard = props => {
         src={props.data.flag}
         alt={props.data.name}
       />
-      <p>{props.data.name}</p>
-      <p>Population: {props.data.population}</p>
-      <p>Capital: {props.data.capital}</p>
-      <p>Region: {props.data.region}</p>
+      <p className="country-card-name">{props.data.name}</p>
+      <p className="country-card-info">
+        <strong>Population:</strong> {props.data.population}
+      </p>
+      <p className="country-card-info">
+        <strong>Capital:</strong> {props.data.capital}
+      </p>
+      <p className='country-card-info'>
+        <strong>Region:</strong> {props.data.region}
+      </p>
     </div>
   );
 };

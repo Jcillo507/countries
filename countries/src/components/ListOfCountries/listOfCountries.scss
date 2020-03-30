@@ -31,11 +31,14 @@
 .search-ctr{
   display: flex;
   justify-content: space-between;
-  margin: 40px 100px;
+  margin: 40px 100px 0 100px;
 }
 
 .search-input{
   height:35px;
   width:400px;
   font-size: 20px;
+}
+.title{
+  text-align: center;
 }

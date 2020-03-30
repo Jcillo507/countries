@@ -88,7 +88,7 @@ class ListOfCountries extends React.Component {
           onChange={onDDClick}
           placeholder="Filter By Region"
         /></span>
-        <h1>{region}</h1>
+        <h1 className='title'>{region}</h1>
         <div className='list-ctr'>
         {countriesDisplay}</div>
       </div>
