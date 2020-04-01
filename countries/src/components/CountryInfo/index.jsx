@@ -51,7 +51,8 @@ class CountryInfo extends React.Component {
       .filter(e => borders.includes(e.code))
       .map(el => (
         <span key={el.country}>
-          <Link to={{ pathname: `/${el.country}` }}>{el.country}</Link>
+          <button className='border-button'>
+          <Link className='border'to={{ pathname: `/${el.country}` }}>{el.country}</Link></button>
         </span>
       ));
     console.log(this.props);
@@ -63,20 +64,24 @@ class CountryInfo extends React.Component {
     ));
     const showInfo = data.map(data => (
       <div key={data.name} className="info-wrapper">
-        <img src={data.flag} alt={data.name} />
+        <img className='country-info-flag'src={data.flag} alt={data.name} />
         <div className="info-ctr">
-          <h1>{data.name}</h1>
+          <h1 className='country-info-name'>{data.name}</h1>
+          <div className='data-wrapper'>
+          <div className='data-ctr'>
           <InfoLine title="Native Name: " value={data.nativeName} />
           <InfoLine title="Population: " value={data.population} />
           <InfoLine title="Region: " value={data.region} />
           <InfoLine title="Subregion: " value={data.subregion} />
-          <InfoLine title="Capital: " value={data.capital} />
+          <InfoLine title="Capital: " value={data.capital} /></div>
+          <div className='data-ctr'>
           <InfoLine title="Top Level Domain: " value={data.topLevelDomain} />
           <InfoLine title="Demonym: " value={data.demonym} />
           <InfoLine title="Currency: " value={data.currencies[0].name} />
-          <div>
+          <div className='country-lang'>
             <strong>Languages: </strong> {langArr}
           </div>
+          </div></div>
           <div>
             <strong>Border Countries :</strong> {borderList}
           </div>
@@ -84,7 +89,7 @@ class CountryInfo extends React.Component {
       </div>
     ));
     return (
-      <div className='countryinfo-ctr'>
+      <div className='country-info-ctr'>
         <Link to={{ pathname: "/" }}>
           <button>Home</button>
         </Link>

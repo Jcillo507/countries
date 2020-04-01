@@ -3,8 +3,8 @@ import "./infoLine.scss";
 
 const InfoLine = props => {
   return (
-    <div className="infoLine-ctr">
-      <span className="line-title">
+    <div className="infoline-ctr">
+      <span className="line-data">
         <strong>{props.title}</strong>
       </span>
       <span className="line-data">{props.value}</span>
