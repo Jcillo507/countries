@@ -12,26 +12,26 @@
   margin-top: 100px;
   align-items: center;
   justify-content: space-evenly;
-
 }
 
 .info-ctr {
   display: flex;
   flex-direction: column;
   width: 50vw;
-  max-height:500px;
+  max-height: 500px;
 }
 
 .country-info-flag {
-  max-height: 500px;
-  max-width: 750px;
   min-height: 500px;
+  max-height: 500px;
   min-width: 750px;
+  max-width: 750px;
   object-fit: cover;
 }
 
 .country-info-name {
-  margin-bottom: 30px;
+  margin-bottom: 20px;
+  font-weight: 900;
 }
 
 .country-lang {
@@ -39,27 +39,41 @@
   font-size: 16px;
 
 }
-.data-wrapper{
-display:flex;
-align-items: space-around;
-justify-content: space-around;
-align-content: space-around;
+
+.data-wrapper {
+  display: flex;
+  align-items: space-around;
 }
-.data-ctr{
+
+.data-ctr {
   max-height: 350px;
   display: flex;
   flex-direction: column;
-   flex-basis: 100%;
-   flex: 1;
-  
+  flex-basis: 100%;
+  flex: 1;
 }
+
 .border-button {
   height: 40px;
   width: fit;
   background-color: rgb(243, 243, 243);
-  margin: 7px;
+  margin: 9px;
+  padding: 7px;
 }
-.border{
+
+.border {
   text-decoration: none;
-font-size:16px;
+  font-size: 16px;
+  color:black
+}
+.border-ctr{
+  margin-top: 20px;
+  display: flex;
+ align-items: center;
+  height:100%
+ 
+}
+
+.border-title{
+white-space: nowrap;
 }
