@@ -24,6 +24,7 @@ background-color: $dark-bg;
 .Dropdown-option {
   color:$dark-txt;
 }
+
   a {
     text-decoration: none;
     color: $dark-txt
@@ -31,6 +32,9 @@ background-color: $dark-bg;
   input{
     background-color: $dark-bg;
     color:$dark-txt;
+    .search-input {
+      background-image: $dark-txt;
+    }
   }
   button{
     background-color: $dark-ele;

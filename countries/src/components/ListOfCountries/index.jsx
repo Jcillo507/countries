@@ -3,6 +3,7 @@ import { Link } from "react-router-dom";
 import Dropdown from "react-dropdown";
 import "react-dropdown/style.css";
 
+
 import './listOfCountries.scss'
 
 import CountryCard from "../CountryCard";
@@ -73,24 +74,27 @@ class ListOfCountries extends React.Component {
       
     return (
       <div>
-        <span className='search-ctr'>
-        <form>
-          <input
-          className='search-input'
-            type="text"
-            placeholder= "Search for a country..."
-            onChange={this.searchChange}
+        <span className="search-ctr">
+          <form>
+            <input
+              className="search-input"
+              type="text"
+              placeholder={"Search for a country..."}
+              onChange={this.searchChange}
+            />
+          </form>
+          <Dropdown
+            className="dropdown"
+            options={options}
+            onChange={onDDClick}
+            placeholder="Filter By Region"
           />
-        </form>
-        <Dropdown
-        className='dropdown'
-          options={options}
-          onChange={onDDClick}
-          placeholder="Filter By Region"
-        /></span>
-        <h1 className='title'>{region}</h1>
-        <div className='list-ctr'>
-        {countriesDisplay}</div>
+        </span>
+        <h1 className="title">
+          {region}
+          
+        </h1>
+        <div className="list-ctr">{countriesDisplay}</div>
       </div>
     );
   }
