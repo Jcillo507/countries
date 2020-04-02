@@ -100,7 +100,7 @@ class CountryInfo extends React.Component {
     return (
       <div className="country-info-ctr">
         <Link to={{ pathname: "/" }}>
-          <button>Home</button>
+          <button className='home-bttn'>Home</button>
         </Link>
         {showInfo}
       </div>
