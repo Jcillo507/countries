@@ -70,7 +70,7 @@ class ListOfCountries extends React.Component {
             .filter(e => e.name.toLowerCase().includes(search.toLowerCase()))
             .filter(e => e.region.includes(region))
             .map(countryIteration);
-
+      
     return (
       <div>
         <span className='search-ctr'>
@@ -78,7 +78,7 @@ class ListOfCountries extends React.Component {
           <input
           className='search-input'
             type="text"
-            placeholder="Search for a country"
+            placeholder= "Search for a country..."
             onChange={this.searchChange}
           />
         </form>
