@@ -11,14 +11,38 @@
 .dark{
 color:$dark-txt;
 background-color: $dark-bg;
+.country-ctr {
+  background-color: $dark-ele;
+}
+.Dropdown-control{
+    background-color: $dark-ele;
+    color:$dark-txt;
+}
+.Dropdown-menu{
+      background-color: $dark-ele;
+}
+.Dropdown-option {
+  color:$dark-txt;
+}
   a {
     text-decoration: none;
     color: $dark-txt
+  }
+  input{
+    background-color: $dark-bg;
+    color:$dark-txt;
+  }
+  button{
+    background-color: $dark-ele;
+    color: $dark-txt;
   }
 }
 .light{
 color:$light-txt;
 background-color: $light-bg;
+.country-ctr{
+  background-color: $light-ele;
+}
   a {
     text-decoration: none;
     color: $light-txt
