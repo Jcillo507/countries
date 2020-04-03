@@ -1,54 +1,68 @@
 @import './base.scss';
-*{
+
+* {
   margin: 0;
   padding: 0;
   font-family: $font;
 }
-.App {
-  margin: 0;
-  
+.App{
+  width:100vw
 }
-.dark{
-color:$dark-txt;
-background-color: $dark-bg;
-.country-ctr {
-  background-color: $dark-ele;
-}
-.Dropdown-control{
+.dark {
+  color: $dark-txt;
+  background-color: $dark-bg;
+
+  .country-ctr {
     background-color: $dark-ele;
-    color:$dark-txt;
-}
-.Dropdown-menu{
-      background-color: $dark-ele;
-}
-.Dropdown-option {
-  color:$dark-txt;
-}
+  }
+
+  .Dropdown-control {
+    background-color: $dark-ele;
+    color: $dark-txt;
+  }
+
+  .Dropdown-menu {
+    background-color: $dark-ele;
+  }
+
+  .Dropdown-option {
+    color: $dark-txt;
+  }
+
+  .Dropdown-control {
+    transition: none;
+  }
 
   a {
     text-decoration: none;
     color: $dark-txt
   }
-  input{
+
+  input {
     background-color: $dark-bg;
-    color:$dark-txt;
-    .search-input {
-      background-image: $dark-txt;
-    }
+    color: $dark-txt;
   }
-  button{
+
+  button {
     background-color: $dark-ele;
     color: $dark-txt;
   }
 }
-.light{
-color:$light-txt;
-background-color: $light-bg;
-.country-ctr{
-  background-color: $light-ele;
-}
+
+.light {
+  color: $light-txt;
+  background-color: $light-bg;
+
+  .country-ctr {
+    background-color: $light-ele;
+  }
+  .Dropdown-control {
+    transition: none;
+  }
   a {
     text-decoration: none;
     color: $light-txt
   }
 }
+
+

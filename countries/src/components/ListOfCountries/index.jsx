@@ -47,7 +47,7 @@ class ListOfCountries extends React.Component {
       this.setState({ region: e.value });
     };
     const countryIteration = data => (
-      <div className='country-list'>
+      <div className='country-list' key={data.name}>
       <Link
         key={data.name}
         to={{
