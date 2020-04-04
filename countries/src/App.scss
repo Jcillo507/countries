@@ -4,11 +4,15 @@
   margin: 0;
   padding: 0;
   font-family: $font;
+
 }
-.App{
-  width:100vw
+
+.App {
+height:100vh or fit-content;
 }
+
 .dark {
+  
   color: $dark-txt;
   background-color: $dark-bg;
 
@@ -56,13 +60,13 @@
   .country-ctr {
     background-color: $light-ele;
   }
+
   .Dropdown-control {
     transition: none;
   }
+
   a {
     text-decoration: none;
     color: $light-txt
   }
 }
-
-

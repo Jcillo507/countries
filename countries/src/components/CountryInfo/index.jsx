@@ -89,9 +89,9 @@ class CountryInfo extends React.Component {
             </div>
           </div>
           <div className="border-ctr">
-            <strong className="border-title">Border Countries:</strong>{" "}
-            <span>
-              {borderList.length > 0 ? borderList : "No Border Countries"}
+            <strong className="border-title">Border Countries:</strong>
+            <span className='bttn-ctr'>
+              {borderList.length > 0 ? borderList : "   No Border Countries"}
             </span>
           </div>
         </div>

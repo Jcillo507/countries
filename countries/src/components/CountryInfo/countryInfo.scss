@@ -1,15 +1,14 @@
 .country-info-ctr {
-  width: 100%;
-  height: 90vh;
   display: flex;
   flex-direction: column;
+  height:100%
 
 }
 
 .info-wrapper {
   display: flex;
   flex-direction: row;
-  margin-top: 40px;
+  margin: 20px;
   align-items: center;
   justify-content: space-evenly;
 }
@@ -17,16 +16,14 @@
 .info-ctr {
   display: flex;
   flex-direction: column;
-  width: 50vw;
-  max-height: 500px;
+    margin-left: 40px;
+
 }
 
 .country-info-flag {
-  min-height: 500px;
-  max-height: 500px;
-  min-width: 750px;
-  max-width: 750px;
-  object-fit: cover;
+  height: 500px;
+  width: 750px;
+  object-fit: contain;
 }
 
 .country-info-name {
@@ -34,29 +31,23 @@
   font-weight: 900;
 }
 
-.country-lang {
-  margin: 10px;
-  font-size: 16px;
-
-}
-
 .data-wrapper {
   display: flex;
   align-items: space-around;
+  
 }
 
 .data-ctr {
-  max-height: 350px;
   display: flex;
   flex-direction: column;
   flex-basis: 100%;
   flex: 1;
+
 }
 
 .border-button {
   height: 40px;
-  width: fit;
-  background-color: rgb(243, 243, 243);
+  background-color: rgb(218, 218, 218);
   margin: 9px;
   padding: 7px;
 }
@@ -65,22 +56,64 @@
   text-decoration: none;
   font-size: 16px;
 }
-.border-ctr{
-  margin-top: 20px;
+
+.border-ctr {
   display: flex;
- align-items: center;
-  height:100%
- 
+  align-items: center;
 }
 
-.border-title{
-white-space: nowrap;
-}
-
-.home-bttn{
-  height:30px;
-  width:90px;
+.home-bttn {
+  height: 30px;
+  width: 90px;
   margin: 30px 30px 0 30px;
   font-size: 20px;
+
+}
+
+@media (max-width: 376px) {
+  // .country-info-ctr {
+  //   height:2000px;  
+  // }
+
+  .country-info-flag {
+    height: 240px;
+    width: 320px;
+  }
+
+  .info-wrapper {
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+  }
+
+  .info-ctr {
+    margin: 0;
+  }
+
+  .data-wrapper {
+    display: flex;
+    flex-direction: column;
+    font-size: 12px;
+  }
+
+  .border-ctr {
+    display: flex;
+    flex-direction: column;
+    object-fit: contain;
+    position:relative;
+    margin-top: 10px;
+  }
+
+  .border-button a{
+    height: 10px;
+    width: 10px;
+    margin: 1px;
+    padding: 1px;
+   
+  }
+
+  .border {
+    font-size: 12px;
+  }
 
 }
