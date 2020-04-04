@@ -46,10 +46,10 @@
 .title {
   text-align: center;
 }
-@media (min-width: 200px) and(max-width: 400px) {
+@media (max-width: 400px) {
   .search-input {
     align-self: center;
-    max-width: 60vw;
+    max-width: 200px;
     padding: 0px 30px;
     margin: 0;
   }

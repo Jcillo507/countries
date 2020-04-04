@@ -8,10 +8,14 @@
 }
 
 .App {
-height:100vh;}
+  // position: absolute;
+  height: 100vh ;
+  width:100vw;
+  display:table;
+}
 
 .dark {
-  
+
   color: $dark-txt;
   background-color: $dark-bg;
 
@@ -69,7 +73,9 @@ height:100vh;}
     color: $light-txt
   }
 }
-@media (max-width: 376px) {
-  .App{
-height:100%
-  }}
+
+@media (max-width: 400px) {
+  .App {
+    height: 100%
+  }
+}
