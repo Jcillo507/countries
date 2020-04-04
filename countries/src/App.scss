@@ -8,8 +8,7 @@
 }
 
 .App {
-height:100vh or fit-content;
-}
+height:100vh;}
 
 .dark {
   
@@ -70,3 +69,7 @@ height:100vh or fit-content;
     color: $light-txt
   }
 }
+@media (max-width: 376px) {
+  .App{
+height:100%
+  }}
